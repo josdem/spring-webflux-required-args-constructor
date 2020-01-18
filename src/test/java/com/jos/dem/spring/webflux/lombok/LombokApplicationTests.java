@@ -1,4 +1,4 @@
-package com.example.springwebfluxrequiredargsconstructor;
+package com.jos.dem.spring.webflux.lombok;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
