@@ -1,5 +1,6 @@
 package com.jos.dem.spring.webflux.lombok;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.jos.dem.spring.webflux.lombok.model.Person;
@@ -30,6 +31,19 @@ class PersonControllerTest {
 					assertTrue(persons.contains(new Person("edzero", "edzero@email.com")), "should contain edzero");
 					assertTrue(persons.contains(new Person("skuarch", "skuarch@email.com")), "should contain skuarch");
 					assertTrue(persons.contains(new Person("jeduan", "jeduan@email.com")), "should contain jeduan");
+				});
+	}
+
+	@Test
+	@DisplayName("Should get josdem")
+	void shouldGetPerson(){
+		webTestClient.get()
+				.uri("/persons/josdem")
+				.exchange()
+				.expectStatus().isOk()
+				.expectBody(Person.class)
+				.value(person -> {
+					assertEquals(new Person("josdem", "joseluis.delacruz@gmail.com"), person, "should get josdem");
 				});
 	}
 
